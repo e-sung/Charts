@@ -40,3 +40,19 @@ public protocol IBarChartDataSet: IBarLineScatterCandleBubbleChartDataSet
     /// array of labels used to describe the different values of the stacked bars
     var stackLabels: [String] { get set }
 }
+
+@objc public enum BarCornerRadius: Int {
+    case none = 0
+    case halfTheWidth
+    case quarterTheWidth
+    case explicit
+    
+    func radius(for width: CGFloat) -> CGFloat? {
+        switch self {
+        case .none: return 0
+        case .halfTheWidth : return width / 2
+        case .quarterTheWidth : return width / 4
+        case .explicit: return nil
+        }
+    }
+}
