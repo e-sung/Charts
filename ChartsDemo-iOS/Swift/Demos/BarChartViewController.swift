@@ -122,12 +122,14 @@ class BarChartViewController: DemoBaseViewController {
         if let set = chartView.data?.dataSets.first as? BarChartDataSet {
             set1 = set
             set1.values = yVals
+            set1.barCornerRadiusType = .halfTheWidth
             chartView.data?.notifyDataChanged()
             chartView.notifyDataSetChanged()
         } else {
             set1 = BarChartDataSet(values: yVals, label: "The year 2017")
             set1.colors = ChartColorTemplates.material()
             set1.drawValuesEnabled = false
+            set1.barCornerRadiusType = .halfTheWidth
             
             let data = BarChartData(dataSet: set1)
             data.setValueFont(UIFont(name: "HelveticaNeue-Light", size: 10)!)
